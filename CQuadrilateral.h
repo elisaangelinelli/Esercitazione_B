@@ -35,7 +35,7 @@ public:
 	/// @{
 	Quadrilateral();
 	Quadrilateral(Format* sf);
-	Quadrilateral(const Quadrilateral &o, const Format sf);
+	Quadrilateral(const Quadrilateral &o);
 	virtual ~Quadrilateral();
 	/// @}
 	

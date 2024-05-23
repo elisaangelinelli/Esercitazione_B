@@ -26,8 +26,7 @@ Quadrilateral::Quadrilateral(Format* sf) {
 } 
 
 /// @brief copy constructor 
-/// @param o reference to the object that should be copied 
-/// @param sf refers to the format of the object we have to copy
+/// @param o reference to the object that should be copied
 Quadrilateral::Quadrilateral(const Quadrilateral &o) {
 	
 	cout << "Quadrilateral - copy constructor" << endl;
