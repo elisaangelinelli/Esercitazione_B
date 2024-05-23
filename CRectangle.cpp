@@ -12,8 +12,7 @@ Rectangle::Rectangle() {
 
 	cout << "Rectangle - constructor - default" << endl;
 
-	Init();
-	InitFormat();
+	Reset();
 
 }
 
@@ -39,14 +38,14 @@ Rectangle::Rectangle(float w, float h) {
 /// @param w width of the rectangle
 /// @param h height of the rectangle 
 /// @param sf struct of type Format
-Rectangle::Rectangle(float w, float h, Format sf) {
+Rectangle::Rectangle(float w, float h, Format sf) : Quadrilateral(sf) {
 
 	Init();
 
 	cout << "Rectangle - constructor - with - format" << endl;
 
 	if ( w <= 0. || h <= 0. ) {
-		WarningMessage("error in the constructor with format"); 
+		WarningMessage("error in the constructor with format (Rectangle)"); 
 		SetDim(0,0);
 		SetFill(k);
 		SetOutline(k);
@@ -63,13 +62,12 @@ Rectangle::~Rectangle() {
 
 	cout << "Rectangle - destructor" << endl;
 	Reset();
-	ResetFormat();
 	free(shapef);
 
 }
 
 /// @brief copy constructor 
-/// @param o reference to the object that should be copied 
+/// @param r reference to the object that should be copied 
 Rectangle::Rectangle(const Rectangle &r) { 
 
 	cout << "Rectangle - copy constructor" << endl;
@@ -96,7 +94,7 @@ Rectangle& Rectangle::operator=(const Rectangle &r) {
 /// @return true if the two objects have the same width and the same length  
 bool Rectangle::operator==(const Rectangle &r) { 
 
-	if (r.width == width && r.height == height)
+	if (r.width == width && r.height == height && r.shapef->fill == shapef->fill && r.shapef->outline == shapef->outline)
 		return true;
 		
 	return false;
@@ -104,6 +102,7 @@ bool Rectangle::operator==(const Rectangle &r) {
 
 /// @brief default initialization of the object
 void Rectangle::Init() {
+
 	SetDim(0,0);
 	
 }
@@ -112,9 +111,11 @@ void Rectangle::Init() {
 /// @brief initialization of the object as a copy of an object 
 /// @param r reference to the object that should be copied 
 void Rectangle::Init(const Rectangle &r) {
-		
+
 	Init();
 	SetDim(r.width,r.height);
+	InitFormat(r.shapef);
+	cout << "post initformat" << endl;
 	
 }
 
@@ -238,7 +239,15 @@ void Rectangle::Dump() {
 
 /// @brief to draw a rectangle
 void Rectangle::Drawing() {
-	
+
+	cout << "I am drawing a rectangle." << endl;
+	cout << "The height of this shape is : " << height << endl;
+	cout << "The width of this shape is : " << width << endl;
+	cout << "The perimeter of this shape is : " << GetPerimeter() << endl;
+	cout << "The area of this shape is : " << GetArea() << endl;
+	cout << "The color of the filling of this shape is : " << shapef->fill << endl;
+	cout << "The color of the outline of this shape is : " << shapef->outline << endl;
+	cout << endl;
 
 }
 

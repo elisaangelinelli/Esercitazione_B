@@ -13,7 +13,7 @@ Rhombus::Rhombus() {
 
 	cout << "Rhombus - constructor - default" << endl;
 
-	Init();
+	Reset();
 
 }
 
@@ -39,11 +39,23 @@ Rhombus::Rhombus(float dL, float dS) {
 /// @param dL diagonal (longer)
 /// @param dS diagonal (shorter)
 /// @param sf struct of type Format
-Rhombus::Rhombus(float dL, float dS, Format sf) {
+Rhombus::Rhombus(float dL, float dS, Format sf) : Quadrilateral(sf) {
 
+	Init();
 	
+	cout << "Rhombus - constructor - with - format" << endl;
 
-
+	if ( dL <= 0. || dS <= 0. ) {
+		WarningMessage("error in the constructor with format (Rhombus)"); 
+		SetDim(0,0);
+		SetFill(k);
+		SetOutline(k);
+	}
+	else{
+		SetDim(dL, dS);
+		SetFormat(sf);
+	}
+	
 }
 
 /// @brief destructor 
@@ -51,11 +63,12 @@ Rhombus::~Rhombus() {
 
 	cout << "Rhombus - destructor" << endl;
 	Reset();
+	free(shapef);
 
 }
 
 /// @brief copy constructor 
-/// @param o reference to the object that should be copied 
+/// @param r reference to the object that should be copied 
 Rhombus::Rhombus(const Rhombus &r) { 
 
 	cout << "Rhombus - copy constructor" << endl;
@@ -65,7 +78,7 @@ Rhombus::Rhombus(const Rhombus &r) {
 }
 
 /// @brief overload of operator = 
-/// @param o reference to the object on the right side of the operator 
+/// @param r reference to the object on the right side of the operator 
 /// @return reference to the object on the left side of the operator 
 Rhombus& Rhombus::operator=(const Rhombus &r) { 
 
@@ -82,7 +95,7 @@ Rhombus& Rhombus::operator=(const Rhombus &r) {
 /// @return true if the two objects have the same width and the same length  
 bool Rhombus::operator==(const Rhombus &r) { 
 
-	if (r.diagL == diagL && r.diagS == diagS)
+	if (r.diagL == diagL && r.diagS == diagS && r.shapef->fill == shapef->fill && r.shapef->outline == shapef->outline )
 		return true;
 		
 	return false;
@@ -90,6 +103,7 @@ bool Rhombus::operator==(const Rhombus &r) {
 
 /// @brief default initialization of the object
 void Rhombus::Init() {
+
 	SetDim(0,0);
 	
 }
@@ -101,6 +115,7 @@ void Rhombus::Init(const Rhombus &r) {
 	
 	Init();
 	SetDim(r.diagL,r.diagS);
+	InitFormat(r.shapef);
 	
 }
 
@@ -238,7 +253,17 @@ void Rhombus::Dump() {
 
 /// @brief to draw a rhombus
 void Rhombus::Drawing() {
-	
+
+	cout << "I am drawing a rhombus." << endl;
+	cout << "The longer diagonal of this shape is : " << diagL << endl;
+	cout << "The shorter diagonal of this shape is : " << diagS << endl;
+	cout << "The side of this shape is : " << GetSide() << endl;
+	cout << "The perimeter of this shape is : " << GetPerimeter() << endl;
+	cout << "The area of this shape is : " << GetArea() << endl;
+	cout << "The color of the filling of this shape is : " << shapef->fill << endl;
+	cout << "The color of the outline of this shape is : " << shapef->outline << endl;
+	cout << endl;
+
 }
 
 
