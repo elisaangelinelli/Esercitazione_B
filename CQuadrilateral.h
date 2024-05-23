@@ -34,7 +34,7 @@ public:
 	/// @name CONSTRUCTORS/DESTRUCTOR
 	/// @{
 	Quadrilateral();
-	Quadrilateral(Format sf);
+	Quadrilateral(Format* sf);
 	Quadrilateral(const Quadrilateral &o, const Format sf);
 	virtual ~Quadrilateral();
 	/// @}
@@ -43,15 +43,13 @@ public:
 	/// @{
 	Quadrilateral& operator=(const Quadrilateral &o); 
 	bool operator==(const Quadrilateral &o);
-	Format& operator=(const Format &sf);
-	bool operator==(const Format &sf);
 	/// @}
 	
 	/// @name BASIC HANDLING
 	/// @{
 	void Init();
 	void InitFormat();
-	void InitFormat(Format sf);												
+	void InitFormat(const Format* sf);												
 	void Init(const Quadrilateral &o);							
 	void Reset();
 	void ResetFormat();												
@@ -63,14 +61,14 @@ public:
 	float GetArea();
 	float GetPerimeter();
 	void GetSides(float &s0, float &s1, float &s2, float &s3);
-	void GetFormat(Format sf); 
+	void GetFormat(Format* sf); 
 	Color GetFill(Color fill);
 	Color GetOutline(Color outline);
 	/// @}
 	
 	/// @name SETTERS
 	/// @{
-	void SetFormat(Format sf);
+	void SetFormat(Format* sf);
 	void SetFill(Color fill);
 	void SetOutline(Color outline);
 	/// @}

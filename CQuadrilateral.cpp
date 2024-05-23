@@ -18,7 +18,7 @@ Quadrilateral::Quadrilateral() {
 
 /// @brief constructor 
 /// sf a struct of type Format with infos on fill color and outline color
-Quadrilateral::Quadrilateral(Format sf) {
+Quadrilateral::Quadrilateral(Format* sf) {
 
 	cout << "Quadrilater - constructor" << endl;
 
@@ -28,12 +28,11 @@ Quadrilateral::Quadrilateral(Format sf) {
 /// @brief copy constructor 
 /// @param o reference to the object that should be copied 
 /// @param sf refers to the format of the object we have to copy
-Quadrilateral::Quadrilateral(const Quadrilateral &o, const Format sf) {
+Quadrilateral::Quadrilateral(const Quadrilateral &o) {
 	
 	cout << "Quadrilateral - copy constructor" << endl;
 
 	Init(o);
-	InitFormat(sf);
 
 }
 
@@ -82,25 +81,6 @@ bool Quadrilateral::operator==(const Quadrilateral &o) {
 	return false;
 }
 
-/// @brief overload of operator = for the format
-/// @param sf refers to the format of the object on the right side of the operator
-/// @return reference to the object on the left side of the operator 
-Format& Quadrilateral::operator=(const Format &sf){
-
-	InitFormat(sf);
-	return *this->shapef;
-
-}
-
-/// @brief overload of operator == 
-/// @param sf reference to the format of the object on the right side of the operator 
-/// @return always false 
-bool Quadrilateral::operator==(const Format &sf){
-
-	return false;
-}
-
-
 /// @brief default initialization of the object
 void Quadrilateral::Init() {
 		
@@ -113,24 +93,26 @@ void Quadrilateral::InitFormat() {
 	ResetFormat(); //we put everything in the color black to symbolize we have nothing to draw
 }
 
-/// @brief  initialization of a format
-/// @param sf format that we want to create
-void Quadrilateral::InitFormat(Format sf){
-	ResetFormat();
-	shapef->fill = (&sf)->fill;
-	shapef->outline = (&sf)->outline;
-
-};
-
 /// @brief initialization of the object as a copy of an object 
-/// @param r reference to the object that should be copied 
+/// @param o reference to the object that should be copied 
 void Quadrilateral::Init(const Quadrilateral &o) {
-	Reset();
 	Init();
+	InitFormat();
 	sides[0] = o.sides[0]; 
 	sides[1] = o.sides[1]; 
 	sides[2] = o.sides[2]; 
 	sides[3] = o.sides[3];
+	InitFormat(o.shapef);
+	
+}
+
+/// @brief initialization of the farmat as a copy of another format 
+/// @param sf reference to the format that should be copied 
+void Quadrilateral::InitFormat(const Format* sf) {
+
+	ResetFormat();
+	shapef->fill = sf->fill;
+	shapef->outline = sf->outline;
 	
 }
 
@@ -179,10 +161,10 @@ void Quadrilateral::GetSides(float &s0, float &s1, float &s2, float &s3) {
 
 /// @brief get the format of the object 
 /// @param sf a struct of type Format to be filled with the format fields
-void Quadrilateral::GetFormat(Format sf) {
+void Quadrilateral::GetFormat(Format* sf) {
 
-	(&sf)->fill = shapef->fill;
-	(&sf)->outline = shapef->outline;
+	sf->fill = shapef->fill;
+	sf->outline = shapef->outline;
 
 } 
 
@@ -205,10 +187,10 @@ Color Quadrilateral::GetOutline(Color outline) {
 
 /// @brief set the format of the object 
 /// @param sf a struct of type Format filled with the format fields
-void Quadrilateral::SetFormat(Format sf) {
+void Quadrilateral::SetFormat(Format* sf) {
 	
-	shapef->fill = (&sf)->fill;
-	shapef->outline = (&sf)->outline;
+	shapef->fill = sf->fill;
+	shapef->outline = sf->outline;
 	
 }
 
