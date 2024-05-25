@@ -47,8 +47,7 @@ public:
 	
 	/// @name BASIC HANDLING
 	/// @{
-	void Init();
-	void InitFormat(const Format* sf);												
+	void Init();											
 	void Init(const Quadrilateral &o);							
 	void Reset();											
 	/// @}

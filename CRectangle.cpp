@@ -113,9 +113,8 @@ void Rectangle::Init() {
 void Rectangle::Init(const Rectangle &r) {
 
 	Init();
-	SetDim(r.width,r.height);
-	InitFormat(r.shapef);
-	cout << "post initformat" << endl;
+	SetDim(r.width, r.height);
+	*shapef = *r.shapef;
 	
 }
 

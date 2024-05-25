@@ -22,7 +22,7 @@ Quadrilateral::Quadrilateral(Format sf) {
 	cout << "Quadrilater - constructor" << endl;
 
 	Init();
-	InitFormat(&sf);
+	*shapef = sf;
 } 
 
 /// @brief copy constructor 
@@ -81,11 +81,14 @@ bool Quadrilateral::operator==(const Quadrilateral &o) {
 
 /// @brief default initialization of the object
 void Quadrilateral::Init() {
-	Format* shapef;
+	Format sf;
+
+	shapef = new(Format);
 
 	SetSides(0.,0.,0.,0.);
-	shapef->fill = k;
-	shapef->outline = k; //we put everything in black to symbolize we have nothing to draw
+	sf.fill = k;
+	sf.outline = k; //we put everything in black to symbolize we have nothing to draw
+	SetFormat(sf);
 	
 }
 
@@ -99,17 +102,8 @@ void Quadrilateral::Init(const Quadrilateral &o) {
 	sides[1] = o.sides[1]; 
 	sides[2] = o.sides[2]; 
 	sides[3] = o.sides[3];
-	InitFormat(o.shapef);
+	*shapef = *o.shapef;
 	
-}
-
-/// @brief initialization of the farmat as a copy of another format 
-/// @param sf reference to the format that should be copied 
-void Quadrilateral::InitFormat(const Format* sf) {
-
-	shapef->fill = sf->fill;
-	shapef->outline = sf->outline;
-
 }
 
 /// @brief total reset of the object  

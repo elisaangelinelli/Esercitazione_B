@@ -115,7 +115,7 @@ void Rhombus::Init(const Rhombus &r) {
 	
 	Init();
 	SetDim(r.diagL,r.diagS);
-	InitFormat(r.shapef);
+	*shapef = *r.shapef;
 	
 }
 
