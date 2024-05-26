@@ -14,7 +14,7 @@ Rectangle::Rectangle() {
 
 	cout << "Rectangle - constructor - default" << endl;
 
-	Reset();
+	Init();
 
 }
 
@@ -240,14 +240,14 @@ void Rectangle::Dump() {
 /// @brief to draw a rectangle
 void Rectangle::Drawing() {
 
+	cout << endl;
 	cout << "I am drawing a rectangle." << endl;
-	cout << "The height of this shape is : " << height << endl;
 	cout << "The width of this shape is : " << width << endl;
+	cout << "The height of this shape is : " << height << endl;
 	cout << "The perimeter of this shape is : " << GetPerimeter() << endl;
 	cout << "The area of this shape is : " << GetArea() << endl;
 	cout << "The color of the filling of this shape is : " << shapef->fill << endl;
 	cout << "The color of the outline of this shape is : " << shapef->outline << endl;
-	cout << endl;
 
 }
 

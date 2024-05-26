@@ -13,7 +13,7 @@ Quadrilateral::Quadrilateral() {
 
 	cout << "Quadrilateral - constructor - default" << endl;
 
-	Reset();
+	Init();
 
 } 
 

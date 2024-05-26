@@ -15,7 +15,7 @@ Rhombus::Rhombus() {
 
 	cout << "Rhombus - constructor - default" << endl;
 
-	Reset();
+	Init();
 
 }
 
@@ -255,6 +255,7 @@ void Rhombus::Dump() {
 /// @brief to draw a rhombus
 void Rhombus::Drawing() {
 
+	cout << endl;
 	cout << "I am drawing a rhombus." << endl;
 	cout << "The longer diagonal of this shape is : " << diagL << endl;
 	cout << "The shorter diagonal of this shape is : " << diagS << endl;
@@ -263,7 +264,6 @@ void Rhombus::Drawing() {
 	cout << "The area of this shape is : " << GetArea() << endl;
 	cout << "The color of the filling of this shape is : " << shapef->fill << endl;
 	cout << "The color of the outline of this shape is : " << shapef->outline << endl;
-	cout << endl;
 
 }
 
