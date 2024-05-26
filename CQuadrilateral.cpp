@@ -1,5 +1,7 @@
 /*! \file CQuadrilateral.cpp
+	\author Elisa Angelinelli 
 	\brief Details of the general class Quadrilateral
+	\date 2024-05-21
 
 	Implementation of the general class Quadrilateral
 */
@@ -16,7 +18,7 @@ Quadrilateral::Quadrilateral() {
 } 
 
 /// @brief constructor 
-/// sf a struct of type Format with infos on fill color and outline color
+/// @param sf a struct of type Format with infos on fill color and outline color
 Quadrilateral::Quadrilateral(Format sf) {
 
 	cout << "Quadrilater - constructor" << endl;
@@ -40,7 +42,7 @@ Quadrilateral::~Quadrilateral() {
 
 	cout << "Quadrilateral - destructor" << endl;
 	Reset();
-	free(shapef);
+	delete(shapef);
 
 }  
 

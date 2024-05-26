@@ -1,3 +1,10 @@
+/*! \file main_test.cpp
+	\author Elisa Angelinelli 
+	\brief Test of Quadrilateral, Rectangle and Rhombus classes 
+	\date 2024-05-21
+
+	Main for Quadrilaterals, Rectangles and Rhombuses
+*/
 #include<iostream>
 
 #include "CQuadrilateral.h"

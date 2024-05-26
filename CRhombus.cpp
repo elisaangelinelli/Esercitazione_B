@@ -1,8 +1,10 @@
-/// \file CRhombus.cpp
-///	\brief class Rhombus: implementation of the functions
-///
-///	Details.
-///
+/*! \file CRhombus.cpp
+	\author Elisa Angelinelli
+	\brief class Rhombus: implementation of the functions
+	\date 2024-05-21
+
+	Details.
+*/
 
 #include<iostream> 
 #include<cmath>
@@ -63,7 +65,6 @@ Rhombus::~Rhombus() {
 
 	cout << "Rhombus - destructor" << endl;
 	Reset();
-	free(shapef);
 
 }
 

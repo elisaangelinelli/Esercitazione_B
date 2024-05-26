@@ -1,8 +1,10 @@
-/// \file CRectangle.cpp
-///	\brief class Rectangle: implementation of the functions
-///
-///	Details.
-///
+/*! \file CRectangle.cpp
+	\author Elisa Angelinelli
+	\brief class Rectangle: implementation of the functions
+	\date 2024-05-21
+
+	Details.
+*/
 
 #include <iostream>
 #include "CRectangle.h"
@@ -62,7 +64,6 @@ Rectangle::~Rectangle() {
 
 	cout << "Rectangle - destructor" << endl;
 	Reset();
-	free(shapef);
 
 }
 
@@ -77,7 +78,7 @@ Rectangle::Rectangle(const Rectangle &r) {
 }
 
 /// @brief overload of operator = 
-/// @param o reference to the object on the right side of the operator 
+/// @param r reference to the object on the right side of the operator 
 /// @return reference to the object on the left side of the operator 
 Rectangle& Rectangle::operator=(const Rectangle &r) { 
 
