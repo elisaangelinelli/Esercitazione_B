@@ -77,7 +77,6 @@ int Menu::Quadrilateral(){
 	cout << "Which shape do you want to add?" << endl;
 	cout << "1 = rectangle" << endl;
 	cout << "2 = rhombus" << endl;
-	cout << "Insert 0 if you want to see the shapes you have in the array." << endl; 
 	scanf("%d", &q);
 	if(q != 1 && q != 2 ){
 		WarningMessage("Not a valid choice.");
