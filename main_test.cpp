@@ -76,18 +76,22 @@ int main() {
 	{
 	case 1:
 		Display.GetAllShapes();
+		Choice();
 		break;
 	case 2:
 		Display.AddShape();
+		Choice();
 		break;
 	case 3:
 		int i;
 		cout << "Which is the index of the shape you want to remove?" << endl;
 		scanf("%i", &i);
 		Display.RemoveShape(i);
+		Choice();
 		break;
 	case 4: 
 		Display.RemoveAllShapes();
+		Choice();
 		break;
 	default:
 		cout << "Not a valid choice" << endl;
