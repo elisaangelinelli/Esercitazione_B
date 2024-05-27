@@ -72,26 +72,12 @@ void Menu::Init(const Menu &m) {
 
 }
 
-int Menu::Choice(){
-	int c = 0;
-	cout << "What do you want to do?" << endl;
-	cout << "1 = see all the shapes" << endl;
-	cout << "2 = add a shape" << endl;
-	cout << "3 = remove a shape" << endl;
-	cout << "4 = remove all the shapes" << endl;
-	scanf("%d", &c);
-	if(c != 1 && c != 2 && c != 3 && c != 4){
-		WarningMessage("Not a valid choice.");
-		return 0;
-	}
-	return c;
-}
-
 int Menu::Quadrilateral(){
 	int q = 0;
 	cout << "Which shape do you want to add?" << endl;
 	cout << "1 = rectangle" << endl;
 	cout << "2 = rhombus" << endl;
+	cout << "Insert 0 if you want to see the shapes you have in the array." << endl; 
 	scanf("%d", &q);
 	if(q != 1 && q != 2 ){
 		WarningMessage("Not a valid choice.");
@@ -104,9 +90,11 @@ int Menu::Quadrilateral(){
 void Menu::GetAllShapes() {
 
 	for(int i = 0; i < MAX_LENGHT; i++){
+		cout << endl;
 		cout << "Element " << i << ":" << endl;
 		if (S_Array[i] == NULL){
 			cout << "No shape" << endl;
+			cout << endl;
 			return;
 		}
 		S_Array[i]->Drawing();
@@ -122,10 +110,10 @@ void Menu::AddShape(){
 			if (Quadrilateral() == 0){
 				return;
 			}
-			if(Quadrilateral() == 1){
+			else if(Quadrilateral() == 1){
 				AddRectangle(i);
 			}
-			if(Quadrilateral() == 2){
+			else if(Quadrilateral() == 2){
 				AddRhombus(i);
 			}
 		}
@@ -145,11 +133,11 @@ void Menu::AddRectangle(int i){
 	int fill, outline;
 
 	cout << "Insert the width of the rectangle" << endl;
-	scanf("%d", &width);
+	scanf("%f", &width);
 	Rect->SetWidth(width);
 
 	cout << "Insert the height of the rectangle" << endl;
-	scanf("%d", &height);
+	scanf("%f", &height);
 	Rect->SetHeight(height);
 
 	cout << "Colors:" << endl;
@@ -179,11 +167,11 @@ void Menu::AddRhombus(int i){
 	int fill, outline;
 
 	cout << "Insert the longer diagonal of the rhombus" << endl;
-	scanf("%d", &dL);
+	scanf("%f", &dL);
 	Rhom->SetDiagL(dL);
 
 	cout << "Insert the shorter diagonal of the rhombus" << endl;
-	scanf("%d", &dS);
+	scanf("%f", &dS);
 	Rhom->SetDiagS(dS);
 
 	cout << "Colors:" << endl;
@@ -205,6 +193,11 @@ void Menu::AddRhombus(int i){
 
 /// @brief remove a shape from the list
 void Menu::RemoveShape(int i){
+	if ( i < 0 || i > MAX_LENGHT){
+		WarningMessage("Not a valid index.");
+		return;
+	}
+
 	if (S_Array[i] == NULL){
 		WarningMessage("This shape does not exist");
 		return;
@@ -243,6 +236,9 @@ void Menu::WarningMessage(const char *string) {
 
 /// @brief for debugging: all about the object
 void Menu::Dump() {
-	
+	cout << endl;
+	cout << "---Menu---" << endl; 
+	cout << endl;
 
+	GetAllShapes();
 }

@@ -24,7 +24,6 @@ protected:
 	/// @brief array of shapes
 	Quadrilateral* S_Array[MAX_LENGHT];
 
-	int Choice();
 	int Quadrilateral();
 
 
@@ -33,6 +32,7 @@ public:
 	/// @name CONSTRUCTORS/DESTRUCTOR
 	/// @{
 	Menu();
+	Menu(const Menu &m);
 	virtual ~Menu();
 	/// @}
 	
